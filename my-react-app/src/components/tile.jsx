@@ -1,18 +1,21 @@
-
 import React from 'react';
-import './tile.css'; // This file will style our tile
+import { useNavigate } from 'react-router-dom'; 
 
-const Tile = ({ title, description, duration }) => {
+import './tile.css'; 
+
+const Tile = ({ title, description, route }) => {
+  const navigate = useNavigate();  
+
+  const handleClick = () => {
+    navigate(route);  
+  };
+
   return (
-    <div className="tile">
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <p><strong>Duration:</strong> {duration}</p>
+    <div className="tile" onClick={handleClick}>  
+      <h3>{title}</h3>  
+      <p>{description}</p> 
     </div>
   );
 };
 
 export default Tile;
-
-
-onescore 

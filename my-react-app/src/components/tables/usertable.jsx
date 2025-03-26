@@ -1,28 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './usertable.css';  // Import CSS for table styling
 
-const UserTable = () => {
-  const userData = [
-    { id: 1, name: 'John Doe', email: 'john@example.com' },
-    { id: 2, name: 'Jane Doe', email: 'jane@example.com' },
+const UserTable = ({ type }) => {
+  
+  const initialRoadmapData = [
+    { phase: 'HTML', duration: '2 weeks', progress: '' },
+    { phase: 'CSS', duration: '2 weeks', progress: '' },
+    { phase: 'JavaScript', duration: '3 weeks', progress: '' },
+    { phase: 'React', duration: '4 weeks', progress: '' },
+    { phase: 'Node.js', duration: '5 weeks', progress: '' }
   ];
 
+  const [roadmapData, setRoadmapData] = useState(initialRoadmapData);
+
+
+  const handleProgressChange = (index, value) => {
+    const updatedData = [...roadmapData];
+    updatedData[index].progress = value;
+    setRoadmapData(updatedData);
+  };
+
   return (
-    <div>
-      <h3>User Data</h3>
-      <table border="1" cellPadding="10" style={{ width: '100%' }}>
+    <div className="table-page">
+      <h2>{type === 'roadmap' ? 'Full Stack Roadmap' : 'Duration'}</h2>
+
+      {/* Table displaying the data */}
+      <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
+            <th>Phase</th>
+            <th>Duration</th>
+            <th>Progress</th> {/* New column for progress */}
           </tr>
         </thead>
         <tbody>
-          {userData.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
+          {roadmapData.map((item, index) => (
+            <tr key={index}>
+              <td>{item.phase}</td>
+              <td>{item.duration}</td>
+              {/* New Progress Column with Input */}
+              <td>
+                <input 
+                  type="text" 
+                  value={item.progress}
+                  onChange={(e) => handleProgressChange(index, e.target.value)} 
+                  placeholder="Enter progress..." 
+                />
+              </td>
             </tr>
           ))}
         </tbody>

@@ -1,55 +1,36 @@
-/* Tile Container */
-.tiles-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  /* Each Tile */
-  .tile {
-    width: 250px;
-    height: 150px;
+
+.tile {
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    border-radius: 8px;
     padding: 20px;
+    margin: 15px;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
   }
   
   .tile:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
   
-  /* Tile Title */
-  .tile-title {
+  .tile h3 {
     font-size: 1.5rem;
-    font-weight: 600;
+    margin-bottom: 10px;
     color: #333;
   }
   
-  /* Tile Description */
-  .tile-description {
-    font-size: 1rem;
+  .tile p {
     color: #666;
+    font-size: 1rem;
   }
   
-  /* Tile Button (optional, if you have any buttons inside the tile) */
-  .tile button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  .tiles-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
   }
   
-  .tile button:hover {
-    background-color: #45a049;
-  }
   

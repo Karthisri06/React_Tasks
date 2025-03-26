@@ -1,11 +1,11 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import AuthForm from "./components/formcomponent";
 import {BrowserRouter, Routes ,Route} from "react-router-dom";
 import Dashboard from "../src/components/dashboard"
 import Navbar from "./components/navbar/navbar";
+import "./components/tables/usertable"
+import UserTable from "./components/tables/usertable";
 
 function App() {
   return (
@@ -16,6 +16,8 @@ function App() {
         <Route path="/login" element={<AuthForm />} />
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/navbar" element={<Navbar/>} />
+        <Route path="/table/roadmap" element={<UserTable type="roadmap" />} />  {/* Roadmap table */}
+        <Route path="/table/duration" element={<UserTable type="duration" />} />
 
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,43 @@
+/* table.css */
+
+/* Table Styling */
+.table-page {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  td input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  td input:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  

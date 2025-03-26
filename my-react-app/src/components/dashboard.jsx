@@ -1,38 +1,24 @@
-import React, { useState } from 'react';
-import Navbar from './navbar/navbar';
-import './dashboard.css';
-
-const Tile = ({ title, description, onClick }) => {
-  return (
-    <div className="tile" onClick={onClick}>
-      <h3 className="tile-title">{title}</h3>
-      <p className="tile-description">{description}</p>
-    </div>
-  );
-};
+import React from 'react';
+import Tile from './tile';  
+import './dashboard.css';  
 
 const Dashboard = () => {
-  const handleTileClick = (tileName) => {
-    console.log(`${tileName} tile clicked`);
-  };
-
   return (
     <div className="dashboard">
-      <div className="dashboard-header">
-        <h2>Welcome to Your Dashboard</h2>
-        <p>Manage your data and explore features.</p>
-      </div>
-
+      <h2>Welcome to the Dashboard</h2>
       <div className="tiles-container">
-        <Tile
-          title="User Data"
-          description="View and manage your personal details."
-          onClick={() => handleTileClick('User Data')}
+        {/* Full Stack Roadmap Tile */}
+        <Tile 
+          title="Full Stack Roadmap" 
+          description="Explore the roadmap for full stack development." 
+          route="/table/roadmap"
         />
-        <Tile
-          title="Watchlist"
-          description="View and manage your watchlist items."
-          onClick={() => handleTileClick('Watchlist')}
+
+        {/* Duration Tile */}
+        <Tile 
+          title="Duration" 
+          description="See the estimated duration for each phase." 
+          route="/table/duration"  
         />
       </div>
     </div>
