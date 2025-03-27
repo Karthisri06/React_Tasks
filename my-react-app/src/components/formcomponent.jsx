@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
-import './formcomponents.css';  
-import Dashboard from './dashboard';
+import  './styles/formcomponents.css'; 
 import { useNavigate } from 'react-router-dom';
 
 const AuthForm = () => {
@@ -16,12 +15,11 @@ const AuthForm = () => {
     e.preventDefault();
 
     if (isLogin) {
-        console.log("Hllo");
         
       if (email === 'user@example.com' && password === 'password') {
-      navigate('/dashboard');
+      navigate('/home');
     } else {
-      navigate('/dashboard');
+      navigate('/home');
     }
     };
   } 

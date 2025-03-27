@@ -1,6 +1,4 @@
-/* table.css */
 
-/* Table Styling */
 .table-page {
     padding: 20px;
     max-width: 800px;
@@ -17,7 +15,7 @@
   th, td {
     padding: 10px;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid black
   }
   
   th {
@@ -27,13 +25,13 @@
   td input {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid black;
     border-radius: 4px;
   }
   
   td input:focus {
     outline: none;
-    border-color: #4CAF50;
+    border-color: #d84c9e;
   }
   
   h2 {

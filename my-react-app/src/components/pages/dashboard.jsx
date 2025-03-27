@@ -1,11 +1,14 @@
 import React from 'react';
-import Tile from './tile';  
-import './dashboard.css';  
+import Tile from '../tile';  
+import '../styles/dashboard.css';
+import Navbar from '../navbar'; 
 
 const Dashboard = () => {
   return (
+    <>
+    <Navbar />
     <div className="dashboard">
-      <h2>Welcome to the Dashboard</h2>
+      <h2>Let's dive into the Concepts of Full stack!</h2>
       <div className="tiles-container">
         {/* Full Stack Roadmap Tile */}
         <Tile 
@@ -22,6 +25,7 @@ const Dashboard = () => {
         />
       </div>
     </div>
+    </>
   );
 };
 

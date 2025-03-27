@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; 
 
-import './tile.css'; 
+import './styles/tile.css'; 
 
 const Tile = ({ title, description, route }) => {
   const navigate = useNavigate();  
