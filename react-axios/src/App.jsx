@@ -1,5 +1,6 @@
 import React from 'react';
-import BookSearchTable from './components/tanstack'
+import BookSearchTable from './components/tanstack';
+import './styles/tanstack.css'
 
 
 const App = () => {

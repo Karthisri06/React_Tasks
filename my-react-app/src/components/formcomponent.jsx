@@ -23,7 +23,7 @@ const AuthForm = () => {
     }
     };
   } 
-
+console.log('karthisri')
   return (
     <div className="auth-form-container">
       <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>

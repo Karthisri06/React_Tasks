@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import '../styles/tanstack.css'
 import {
   createColumnHelper,
   flexRender,
@@ -16,7 +15,7 @@ import { ArrowUpDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Se
 const columnHelper = createColumnHelper();
 
 const fetchBooks = async () => {
-  const res = await axios.get("https://openlibrary.org/search.json?q=random&limit=100");
+  const res = await axios.get("https://openlibrary.org/search.json?q=random&limit=70");
   return res.data.docs;
 };
 
@@ -78,56 +77,59 @@ export default function App() {
   });
 
   return (
-    <div className="app-container">
-      <h1 className="title">Book Search</h1>
+    <div className="flex flex-col min-h-screen max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <h1 className="text-3xl font-bold mb-6 text-center">Book Search</h1>
 
       {/* Search Input */}
-      <div className="search-input-container">
+      <div className="mb-6 relative flex justify-center">
         <input
           value={globalFilter ?? ""}
           onChange={(e) => setGlobalFilter(e.target.value)}
           placeholder="Search books..."
-          className="search-input"
+          className="w-full max-w-md pl-10 pr-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
         />
-        <Search className="search-icon" size={20} />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
       </div>
 
       {/* Table */}
-      <div className="table-container">
-        <table className="table">
-          <thead className="table-header">
+      <div className="overflow-x-auto bg-white shadow-lg rounded-lg border">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-indigo-600 text-white">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} className="table-header-cell">
+                  <th
+                    key={header.id}
+                    className="px-6 py-3 text-left text-sm font-semibold text-white uppercase tracking-wider"
+                  >
                     <div
                       {...{
                         className: header.column.getCanSort()
-                          ? "sortable-header"
+                          ? "cursor-pointer select-none flex items-center space-x-2"
                           : "",
                         onClick: header.column.getToggleSortingHandler(),
                       }}
                     >
                       {flexRender(header.column.columnDef.header, header.getContext())}
-                      <ArrowUpDown className="sort-icon" size={16} />
+                      <ArrowUpDown className="ml-2" size={16} />
                     </div>
                   </th>
                 ))}
               </tr>
             ))}
           </thead>
-          <tbody className="table-body">
+          <tbody className="bg-white divide-y divide-gray-200">
             {loading ? (
               <tr>
-                <td colSpan={4} className="loading-text">
+                <td colSpan={4} className="text-center py-4 text-gray-500">
                   Loading...
                 </td>
               </tr>
             ) : (
               table.getRowModel().rows.map((row) => (
-                <tr key={row.id} className="table-row">
+                <tr key={row.id} className="hover:bg-gray-100 transition duration-200">
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className="table-cell">
+                    <td key={cell.id} className="px-6 py-4 text-sm text-gray-700">
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   ))}
@@ -139,10 +141,10 @@ export default function App() {
       </div>
 
       {/* Pagination Controls */}
-      <div className="pagination-controls">
-        <div className="pagination-buttons">
+      <div className="flex items-center justify-between mt-6">
+        <div className="flex items-center space-x-2">
           <button
-            className="pagination-btn"
+            className="p-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50"
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
@@ -150,14 +152,14 @@ export default function App() {
           </button>
 
           <button
-            className="pagination-btn"
+            className="p-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
             <ChevronLeft size={20} />
           </button>
 
-          <span className="page-info">
+          <span className="flex items-center">
             <input
               min={1}
               max={table.getPageCount()}
@@ -167,13 +169,13 @@ export default function App() {
                 const page = e.target.value ? Number(e.target.value) - 1 : 0;
                 table.setPageIndex(page);
               }}
-              className="page-input"
+              className="w-16 p-2 rounded-md border border-gray-300 text-center"
             />
-            <span className="page-text">of {table.getPageCount()}</span>
+            <span className="ml-1">of {table.getPageCount()}</span>
           </span>
 
           <button
-            className="pagination-btn"
+            className="p-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
@@ -181,18 +183,18 @@ export default function App() {
           </button>
 
           <button
-            className="pagination-btn"
+            className="p-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
             <ChevronsRight size={20} />
           </button>
         </div>
+
       </div>
     </div>
   );
 }
-
 
 
 
